@@ -1,11 +1,23 @@
+
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 
-/*
- * Insertion Sort:
- * Algoritma ini membangun array terurut satu per satu,
- * dengan cara menyisipkan elemen ke posisi yang tepat.
- */
+#include <string.h>
+
+// Fungsi untuk mengurutkan array string
+void insertion_sort_str(char **arr, int n) {
+    for (int i = 1; i < n; i++) {
+        char *key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && strcmp(arr[j], key) > 0) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+// Fungsi untuk mengurutkan array integer
 void insertion_sort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];
@@ -21,3 +33,4 @@ void insertion_sort(int arr[], int n) {
 }
 
 #endif
+

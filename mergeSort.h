@@ -2,13 +2,11 @@
 #define MERGE_SORT_H
 
 #include <stdlib.h>
+#include <string.h>
 
-/*
- * Merge Sort:
- * Algoritma ini membagi array menjadi dua bagian, menyortirnya secara rekursif,
- * dan menggabungkannya kembali dalam keadaan terurut.
- */
+void merge_sort_str(char **arr, int n);
 
+// fungsi untuk mengurutkan integer
 void merge(int arr[], int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -39,6 +37,33 @@ void merge_sort(int arr[], int l, int r) {
         merge_sort(arr, m + 1, r);
         merge(arr, l, m, r);
     }
+}
+
+// Untuk string
+void merge_sort_str(char **arr, int n) {
+    if (n <= 1) return;
+
+    int mid = n / 2;
+    char **left = malloc(mid * sizeof(char *));
+    char **right = malloc((n - mid) * sizeof(char *));
+
+    for (int i = 0; i < mid; i++) left[i] = arr[i];
+    for (int i = mid; i < n; i++) right[i - mid] = arr[i];
+
+    merge_sort_str(left, mid);
+    merge_sort_str(right, n - mid);
+
+    int i = 0, j = 0, k = 0;
+    while (i < mid && j < (n - mid)) {
+        if (strcmp(left[i], right[j]) <= 0) arr[k++] = left[i++];
+        else arr[k++] = right[j++];
+    }
+
+    while (i < mid) arr[k++] = left[i++];
+    while (j < n - mid) arr[k++] = right[j++];
+
+    free(left);
+    free(right);
 }
 
 #endif

@@ -1,11 +1,25 @@
+
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
-/*
- * Selection Sort:
- * Algoritma ini mencari elemen terkecil dari array dan menukarnya dengan elemen pertama,
- * lalu mengulang untuk bagian array yang belum terurut.
- */
+#include <string.h>
+
+// Fungsi untuk mengurutkan array string
+void selection_sort_str(char **arr, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (strcmp(arr[j], arr[min_idx]) < 0) {
+                min_idx = j;
+            }
+        }
+        char *temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+// Fungsi untuk mengurutkan array integer
 void selection_sort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int min_idx = i;
@@ -20,3 +34,4 @@ void selection_sort(int arr[], int n) {
 }
 
 #endif
+

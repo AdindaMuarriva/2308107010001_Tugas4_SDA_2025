@@ -4,10 +4,8 @@
 #include <time.h>
 #include <string.h>
 
-/*
- * Menghasilkan angka acak dan menyimpannya ke file
- * serta mencatat waktu eksekusinya.
- */
+//  Menghasilkan angka acak dan menyimpannya ke file
+//  serta mencatat waktu eksekusinya.
 void generate_random_numbers(const char *filename, int count, int max_value) {
     FILE *fp = fopen(filename, "w");
     if (!fp) {
@@ -30,9 +28,9 @@ void generate_random_numbers(const char *filename, int count, int max_value) {
     printf("Waktu generate angka: %.2f detik\n", time_taken);
 }
 
-/*
- * Membuat satu kata acak
- */
+
+ // Membuat satu kata acak
+ 
 void random_word(char *word, int length) {
     static const char charset[] = "abcdefghijklmnopqrstuvwxyz";
     for (int i = 0; i < length; i++) {
@@ -42,10 +40,10 @@ void random_word(char *word, int length) {
     word[length] = '\0';
 }
 
-/*
- * Menghasilkan kata acak dan menyimpannya ke file
- * serta mencatat waktu eksekusinya.
- */
+
+//  Menghasilkan kata acak dan menyimpannya ke file
+//  serta mencatat waktu eksekusinya.
+  
 void generate_random_words(const char *filename, int count, int max_word_length) {
     FILE *fp = fopen(filename, "w");
     if (!fp) {
